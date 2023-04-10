@@ -9,13 +9,21 @@ Class {
 }
 
 { #category : #accessing }
+MorrisPlayer >> gtTokensFor: aView [
+	<gtView>
+	^aView list
+	title: 'Tokens';
+	items: [tokens]
+]
+
+{ #category : #accessing }
 MorrisPlayer >> initialize [
 	super initialize.
-	tokens := 
-	(1 to: 9 ) collect: [ :each |MorrisToken new name: each].
+	tokens := (1 to: 9) collect: [ :i | MorrisToken new  ]
 ]
 
 { #category : #accessing }
 MorrisPlayer >> name: aString [ 
-	name := aString
+	name := aString.
+	tokens withIndexDo: [:each :i | each name: name, i asString ]
 ]
