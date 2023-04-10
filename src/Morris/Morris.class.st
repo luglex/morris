@@ -14,3 +14,13 @@ Morris >> initialize [
 	playerA := MorrisPlayer new name: 'A'.
 	playerB := MorrisPlayer new name: 'B'.
 ]
+
+{ #category : #accessing }
+Morris >> playerA [
+	^playerA
+]
+
+{ #category : #accessing }
+Morris >> players [
+	^ {playerA.playerB}
+]

@@ -27,3 +27,8 @@ MorrisPlayer >> name: aString [
 	name := aString.
 	tokens withIndexDo: [:each :i | each name: name, i asString ]
 ]
+
+{ #category : #'as yet unclassified' }
+MorrisPlayer >> tokens [
+	^ tokens
+]
