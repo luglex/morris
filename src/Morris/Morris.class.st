@@ -20,6 +20,11 @@ Morris >> playerA [
 	^playerA
 ]
 
+{ #category : #'as yet unclassified' }
+Morris >> playerB [
+	^ playerB
+]
+
 { #category : #accessing }
 Morris >> players [
 	^ {playerA.playerB}

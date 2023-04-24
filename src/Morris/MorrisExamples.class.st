@@ -22,3 +22,13 @@ MorrisExamples >> playerAFromEmptyMorris [
 	self assert: playerA tokens first name = 'A1'.
 	^ playerA
 ]
+
+{ #category : #accessing }
+MorrisExamples >> playerBFromEmptyMorris [
+	<gtExample>
+	| playerB |
+	playerB := self emptyMorris playerB.
+	self assert: playerB tokens size = 9.
+	self assert: playerB tokens first name = 'B1'.
+	^ playerB
+]
