@@ -2,7 +2,8 @@ Class {
 	#name : #MorrisToken,
 	#superclass : #Object,
 	#instVars : [
-		'name'
+		'name',
+		'state'
 	],
 	#category : #Morris
 }
@@ -10,6 +11,17 @@ Class {
 { #category : #accessing }
 MorrisToken >> gtDisplayOn: stream [
 	stream nextPutAll: name
+]
+
+{ #category : #accessing }
+MorrisToken >> initialize [
+	super initialize.
+	state := #inHand
+]
+
+{ #category : #'as yet unclassified' }
+MorrisToken >> isInHand [
+	^ state = #inHand
 ]
 
 { #category : #'as yet unclassified' }
