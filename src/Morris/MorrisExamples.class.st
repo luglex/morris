@@ -10,6 +10,7 @@ MorrisExamples >> emptyMorris [
 	| morris |
 	morris := Morris new.
 	self assert: morris players size = 2.
+	self assert: morris fields size = 24.
 	^ morris
 ]
 

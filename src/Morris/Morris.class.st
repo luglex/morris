@@ -3,16 +3,23 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'playerA',
-		'playerB'
+		'playerB',
+		'fields'
 	],
 	#category : #Morris
 }
+
+{ #category : #'as yet unclassified' }
+Morris >> fields [
+	^ fields
+]
 
 { #category : #accessing }
 Morris >> initialize [
 	super initialize.
 	playerA := MorrisPlayer new name: 'A'.
 	playerB := MorrisPlayer new name: 'B'.
+	fields := (1 to: 24) collect: [ :i | MorrisToken new name: i ]
 ]
 
 { #category : #accessing }
