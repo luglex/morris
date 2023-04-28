@@ -9,7 +9,7 @@ Class {
 	#category : #Morris
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Morris >> fields [
 	^ fields
 ]

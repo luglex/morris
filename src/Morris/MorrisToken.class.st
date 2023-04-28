@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #accessing }
+MorrisToken >> beOnField [
+	state := #OnField.
+]
+
+{ #category : #accessing }
 MorrisToken >> gtDisplayOn: stream [
 	stream nextPutAll: name
 ]
@@ -22,6 +27,11 @@ MorrisToken >> initialize [
 { #category : #'as yet unclassified' }
 MorrisToken >> isInHand [
 	^ state = #inHand
+]
+
+{ #category : #'as yet unclassified' }
+MorrisToken >> isOnField [
+	^ state = #OnField
 ]
 
 { #category : #'as yet unclassified' }
