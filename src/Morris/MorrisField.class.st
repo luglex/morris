@@ -11,6 +11,11 @@ Class {
 MorrisField >> name: i [ 
 ]
 
+{ #category : #'as yet unclassified' }
+MorrisField >> number [
+	^ number
+]
+
 { #category : #accessing }
 MorrisField >> number: i [
 	number := i.

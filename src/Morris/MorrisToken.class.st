@@ -13,6 +13,11 @@ MorrisToken >> beOnField [
 	state := #OnField.
 ]
 
+{ #category : #'as yet unclassified' }
+MorrisToken >> beOnField: aMorrisField [ 
+	state := MorrisTokenOnField new field: aMorrisField.
+]
+
 { #category : #accessing }
 MorrisToken >> gtDisplayOn: stream [
 	stream nextPutAll: name
@@ -31,7 +36,12 @@ MorrisToken >> isInHand [
 
 { #category : #'as yet unclassified' }
 MorrisToken >> isOnField [
-	^ state = #OnField
+	^ state class = MorrisTokenOnField.
+]
+
+{ #category : #'as yet unclassified' }
+MorrisToken >> isOnField: anInteger [
+	^ state field number = anInteger.
 ]
 
 { #category : #'as yet unclassified' }
