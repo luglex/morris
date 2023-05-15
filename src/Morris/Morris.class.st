@@ -101,7 +101,7 @@ Morris >> initialize [
 	super initialize.
 	playerA := MorrisPlayer new name: 'A'.
 	playerB := MorrisPlayer new name: 'B'.
-	fields := (1 to: 24) collect: [ :i | MorrisToken new name: i ]
+	fields := (1 to: 24) collect: [ :i | MorrisField new number: i ]
 ]
 
 { #category : #accessing }

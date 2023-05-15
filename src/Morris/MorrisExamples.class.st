@@ -15,6 +15,10 @@ MorrisExamples >> emptyMorris [
 ]
 
 { #category : #accessing }
+MorrisExamples >> join: aSequenceableCollection [
+]
+
+{ #category : #accessing }
 MorrisExamples >> playerAFromEmptyMorris [
 	<gtExample>
 	| playerA |
@@ -32,6 +36,18 @@ MorrisExamples >> playerBFromEmptyMorris [
 	self assert: playerB tokens size = 9.
 	self assert: playerB tokens first name = 'B1'.
 	^ playerB
+]
+
+{ #category : #accessing }
+MorrisExamples >> tokenA1OnField5 [
+	<gtExample>
+	| morris playerA tokenA1 field5 |
+	morris := self emptyMorris.
+	playerA := morris playerA.
+	tokenA1 := playerA tokens first.
+	field5 := morris fields fifth.
+	self assert: (field5 isKindOf: MorrisField).
+	^ field5
 ]
 
 { #category : #accessing }
