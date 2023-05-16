@@ -8,11 +8,6 @@ Class {
 	#category : #Morris
 }
 
-{ #category : #accessing }
-MorrisToken >> beOnField [
-	state := #OnField.
-]
-
 { #category : #'as yet unclassified' }
 MorrisToken >> beOnField: aMorrisField [ 
 	state := MorrisTokenOnField new field: aMorrisField.
