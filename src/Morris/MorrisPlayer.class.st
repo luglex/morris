@@ -11,9 +11,11 @@ Class {
 { #category : #accessing }
 MorrisPlayer >> gtTokensFor: aView [
 	<gtView>
-	^aView list
-	title: 'Tokens';
-	items: [tokens]
+	^aView columnedList
+		title: 'Tokens';
+		items: [tokens];
+		column: 'Field' text: #gtDisplayString;
+		column: 'State' text: [:token | token state gtDisplayString ]
 ]
 
 { #category : #accessing }

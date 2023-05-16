@@ -48,3 +48,8 @@ MorrisToken >> name [
 MorrisToken >> name: aString [ 
 	name := aString
 ]
+
+{ #category : #accessing }
+MorrisToken >> state [
+	^ state
+]

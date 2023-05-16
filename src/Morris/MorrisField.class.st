@@ -8,6 +8,13 @@ Class {
 }
 
 { #category : #accessing }
+MorrisField >> gtDisplayOn: stream [
+	stream
+		nextPutAll: 'Field ';
+		nextPutAll: number asString
+]
+
+{ #category : #accessing }
 MorrisField >> name: i [ 
 ]
 

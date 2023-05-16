@@ -16,3 +16,10 @@ MorrisTokenOnField >> field [
 MorrisTokenOnField >> field: aMorrisField [
 	field := aMorrisField
 ]
+
+{ #category : #accessing }
+MorrisTokenOnField >> gtDisplayOn: stream [
+	stream
+		nextPutAll: 'On '.
+	field gtDisplayOn: stream.
+]
