@@ -49,7 +49,7 @@ MorrisExamples >> tokenA1OnField5 [
 	self assert: tokenA1 isOnField.
 	self assert: (tokenA1 isOnField: 5).
 	self assert: tokenA1 isInHand not.
-	^ playerA
+	^ tokenA1
 ]
 
 { #category : #accessing }
@@ -59,7 +59,5 @@ MorrisExamples >> tokensOfPlayerAFromEmptyMorris [
 	playerA := self playerAFromEmptyMorris.
 	tokenA1 := playerA tokens first.
 	self assert: tokenA1 isInHand.
-	tokenA1 beOnField.
-	self assert: tokenA1 isOnField.
 	^ playerA
 ]
