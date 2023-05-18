@@ -11,7 +11,7 @@ Class {
 MorrisField >> gtDisplayOn: stream [
 	stream
 		nextPutAll: 'Field ';
-		nextPutAll: number asString
+		nextPutAll: number asString.
 ]
 
 { #category : #accessing }
