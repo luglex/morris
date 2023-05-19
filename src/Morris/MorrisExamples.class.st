@@ -49,7 +49,7 @@ MorrisExamples >> tokenA1OnField5 [
 	self assert: tokenA1 isOnField.
 	self assert: (tokenA1 isOnField: 5).
 	self assert: tokenA1 isInHand not.
-	^ tokenA1
+	^ playerA
 ]
 
 { #category : #accessing }

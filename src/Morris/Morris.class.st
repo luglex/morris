@@ -10,8 +10,46 @@ Class {
 }
 
 { #category : #accessing }
+Morris >> fieldCoordinates [
+	^ {100 @ 100.
+		250 @ 100.
+		400 @ 100.
+		100 @ 250.
+		100 @ 400.
+		250 @ 400.
+		400 @ 400.
+		400 @ 250.
+		150 @ 150.
+		150 @ 250.
+		150 @ 350.
+		250 @ 150.
+		350 @ 150.
+		350 @ 250.
+		350 @ 350.
+		250 @ 350.
+		200 @ 200.
+		200 @ 250.
+		200 @ 300.
+		250 @ 300.
+		300 @ 300.
+		300 @ 250.
+		300 @ 200.
+		250 @ 200}
+]
+
+{ #category : #accessing }
 Morris >> fields [
 	^ fields
+]
+
+{ #category : #accessing }
+Morris >> gtFieldsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Fields';
+		items: [fields];
+		column: 'Field' text: #gtDisplayString;
+		column: 'Coordinate' text: [:field | field coordinate gtDisplayString ].
 ]
 
 { #category : #accessing }
@@ -24,31 +62,7 @@ Morris >> gtPositionsFor: aView [
 		stencil: [ boardElement := BlElement new
 					size: 500 @ 500;
 					background: Color veryVeryLightGray.
-
-			{100 @ 100.
-				250 @ 100.
-				400 @ 100.
-				100 @ 250.
-				100 @ 400.
-				250 @ 400.
-				400 @ 400.
-				400 @ 250.
-				150 @ 150.
-				150 @ 250.
-				150 @ 350.
-				250 @ 150.
-				350 @ 150.
-				350 @ 250.
-				350 @ 350.
-				250 @ 350.
-				200 @ 200.
-				200 @ 250.
-				200 @ 300.
-				250 @ 300.
-				300 @ 300.
-				300 @ 250.
-				300 @ 200.
-				250 @ 200}
+			self fieldCoordinates
 				do: [ :point | 
 					circle := BlElement new
 							size: 10 @ 10;
@@ -101,7 +115,11 @@ Morris >> initialize [
 	super initialize.
 	playerA := MorrisPlayer new name: 'A'.
 	playerB := MorrisPlayer new name: 'B'.
-	fields := (1 to: 24) collect: [ :i | MorrisField new number: i ]
+	fields := (1 to: 24)
+			collect: [ :i | 
+				MorrisField new
+					number: i;
+					coordinate: (self fieldCoordinates at: i) ]
 ]
 
 { #category : #accessing }

@@ -2,10 +2,21 @@ Class {
 	#name : #MorrisField,
 	#superclass : #Object,
 	#instVars : [
-		'number'
+		'number',
+		'coordinate'
 	],
 	#category : #Morris
 }
+
+{ #category : #accessing }
+MorrisField >> coordinate [
+	^ coordinate
+]
+
+{ #category : #accessing }
+MorrisField >> coordinate: aPoint [
+	coordinate := aPoint
+]
 
 { #category : #accessing }
 MorrisField >> gtDisplayOn: stream [
@@ -24,6 +35,6 @@ MorrisField >> number [
 ]
 
 { #category : #accessing }
-MorrisField >> number: i [
-	number := i.
+MorrisField >> number: aNumber [
+	number := aNumber.
 ]
