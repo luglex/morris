@@ -34,7 +34,7 @@ Morris >> fieldCoordinates [
 		300 @ 300.
 		300 @ 250.
 		300 @ 200.
-		250 @ 200}
+		250 @ 200}.
 ]
 
 { #category : #accessing }
@@ -62,13 +62,15 @@ Morris >> gtPositionsFor: aView [
 		stencil: [ boardElement := BlElement new
 					size: 500 @ 500;
 					background: Color veryVeryLightGray.
-			self fieldCoordinates
-				do: [ :point | 
+			self fields
+				do: [ :field | 
 					circle := BlElement new
 							size: 10 @ 10;
 							background: Color black;
 							geometry: BlCircleGeometry new;
-							relocate: point - (5 @ 5).
+							relocate: field coordinate - (5 @ 5);
+							when: BlClickEvent
+								do: [ :event | event target phlow spawnObject: field ].
 					boardElement addChild: circle ].
 
 			{100 @ 100 -> (250 @ 100).
