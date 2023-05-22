@@ -14,27 +14,29 @@ Morris >> fieldCoordinates [
 	^ {100 @ 100.
 		250 @ 100.
 		400 @ 100.
-		100 @ 250.
-		100 @ 400.
-		250 @ 400.
-		400 @ 400.
 		400 @ 250.
+		400 @ 400.
+		250 @ 400.
+		100 @ 400.
+		100 @ 250.
 		150 @ 150.
-		150 @ 250.
-		150 @ 350.
 		250 @ 150.
+		
 		350 @ 150.
 		350 @ 250.
 		350 @ 350.
 		250 @ 350.
+		150 @ 350.
+		150 @ 250.
 		200 @ 200.
-		200 @ 250.
-		200 @ 300.
-		250 @ 300.
-		300 @ 300.
-		300 @ 250.
+		250 @ 200.
 		300 @ 200.
-		250 @ 200}.
+		300 @ 250.
+		
+		300 @ 300.
+		250 @ 300.
+		200 @ 300.
+		200 @ 250}.
 ]
 
 { #category : #accessing }
@@ -43,17 +45,7 @@ Morris >> fields [
 ]
 
 { #category : #accessing }
-Morris >> gtFieldsFor: aView [
-	<gtView>
-	^ aView columnedList
-		title: 'Fields';
-		items: [fields];
-		column: 'Field' text: #gtDisplayString;
-		column: 'Coordinate' text: [:field | field coordinate gtDisplayString ].
-]
-
-{ #category : #accessing }
-Morris >> gtPositionsFor: aView [
+Morris >> gtBoardFor: aView [
 	<gtView>
 	| boardElement circle line |
 	^ aView explicit
@@ -65,10 +57,13 @@ Morris >> gtPositionsFor: aView [
 			self fields
 				do: [ :field | 
 					circle := BlElement new
-							size: 10 @ 10;
+							size: 30 @ 30;
+							addChild: ((BlTextElement new
+									text: (field number asString asRopedText foreground: Color white))
+									asScalableElement maxScale: 1);
 							background: Color black;
 							geometry: BlCircleGeometry new;
-							relocate: field coordinate - (5 @ 5);
+							relocate: field coordinate - (15 @ 15);
 							when: BlClickEvent
 								do: [ :event | event target phlow spawnObject: field ].
 					boardElement addChild: circle ].
@@ -113,6 +108,16 @@ Morris >> gtPositionsFor: aView [
 ]
 
 { #category : #accessing }
+Morris >> gtFieldsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Fields';
+		items: [fields];
+		column: 'Field' text: #gtDisplayString;
+		column: 'Coordinate' text: [:field | field coordinate gtDisplayString ].
+]
+
+{ #category : #accessing }
 Morris >> initialize [
 	super initialize.
 	playerA := MorrisPlayer new name: 'A'.
@@ -121,7 +126,7 @@ Morris >> initialize [
 			collect: [ :i | 
 				MorrisField new
 					number: i;
-					coordinate: (self fieldCoordinates at: i) ]
+					coordinate: (self fieldCoordinates at: i) ].
 ]
 
 { #category : #accessing }
