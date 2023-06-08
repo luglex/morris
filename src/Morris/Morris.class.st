@@ -10,6 +10,34 @@ Class {
 }
 
 { #category : #accessing }
+Morris >> fieldConnections [
+	^ {1 -> {2 . 8}.
+		2 -> {1 . 3 . 10}.
+		3 -> {2 . 4}.
+		4 -> {3 . 5. 12}.
+		5 -> {4 . 6}.
+		6 -> {5 . 7. 14}.
+		7 -> {6 . 8}.
+		8 -> {1 . 7 . 16}.
+		9 -> {10 . 16}.
+		10 -> {9 . 11 . 18}.
+		11 -> {10 . 12}.
+		12 -> {4 . 11 . 13}.
+		13 -> {12 . 14}.
+		14 -> {13 . 15 . 22}.
+		15 -> {14 . 16}.
+		16 -> {9 . 15 . 24}.
+		17 -> {18 . 24}.
+		18 -> {10 . 17 . 19}.
+		19 -> {18 . 20}.
+		20 -> {12 . 19 . 21}.
+		21 -> {22 . 23}.
+		22 -> {14 . 21 . 23}.
+		23 -> {22 . 24}.
+		24 -> {16 . 17 . 23}.}.
+]
+
+{ #category : #accessing }
 Morris >> fieldCoordinates [
 	^ {100 @ 100.
 		250 @ 100.
@@ -104,7 +132,7 @@ Morris >> gtBoardFor: aView [
 							border: (BlBorder paint: Color black width: 1).
 					boardElement addChild: line ].
 
-			boardElement ]
+			boardElement ].
 ]
 
 { #category : #accessing }
@@ -119,6 +147,7 @@ Morris >> gtFieldsFor: aView [
 
 { #category : #accessing }
 Morris >> initialize [
+	| connectedFields |
 	super initialize.
 	playerA := MorrisPlayer new name: 'A'.
 	playerB := MorrisPlayer new name: 'B'.
@@ -127,6 +156,12 @@ Morris >> initialize [
 				MorrisField new
 					number: i;
 					coordinate: (self fieldCoordinates at: i) ].
+	self fieldConnections
+		do: [ :each | 
+			| field |
+			field := fields at: each key.
+			connectedFields := each value collect: [ :aNumber | fields at: aNumber].
+			field connectedFields: connectedFields ]
 ]
 
 { #category : #accessing }

@@ -15,6 +15,24 @@ MorrisExamples >> emptyMorris [
 ]
 
 { #category : #accessing }
+MorrisExamples >> morrisWithTokens [
+	<gtExample>
+	| morris playerA tokenA1 field5 |
+	morris := self emptyMorris.
+	playerA := morris playerA.
+	tokenA1 := playerA tokens first.
+	field5 := morris fields fifth.
+	self assert: (field5 isKindOf: MorrisField).
+	self assert: tokenA1 isInHand.
+	self assert: tokenA1 isOnField not.
+	tokenA1 beOnField: field5.
+	self assert: tokenA1 isOnField.
+	self assert: (tokenA1 isOnField: 5).
+	self assert: tokenA1 isInHand not.
+	^ morris
+]
+
+{ #category : #accessing }
 MorrisExamples >> playerAFromEmptyMorris [
 	<gtExample>
 	| playerA |
@@ -49,7 +67,7 @@ MorrisExamples >> tokenA1OnField5 [
 	self assert: tokenA1 isOnField.
 	self assert: (tokenA1 isOnField: 5).
 	self assert: tokenA1 isInHand not.
-	^ playerA
+	^ morris
 ]
 
 { #category : #accessing }

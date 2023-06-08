@@ -3,10 +3,16 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'number',
-		'coordinate'
+		'coordinate',
+		'connectedFields'
 	],
 	#category : #Morris
 }
+
+{ #category : #'as yet unclassified' }
+MorrisField >> connectedFields: aCollection [ 
+	connectedFields := aCollection
+]
 
 { #category : #accessing }
 MorrisField >> coordinate [
