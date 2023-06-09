@@ -73,66 +73,55 @@ Morris >> fields [
 ]
 
 { #category : #accessing }
-Morris >> gtBoardFor: aView [
+Morris >> gtBoardWithFieldNumbersFor: aView [
 	<gtView>
-	| boardElement circle line |
+	| boardElement |
 	^ aView explicit
-		title: 'Board';
-		priority: 10;
+		title: 'Board with field numbers';
+		priority: 1;
 		stencil: [ boardElement := BlElement new
 					size: 500 @ 500;
 					background: Color veryVeryLightGray.
-			self fields
+			fields
 				do: [ :field | 
+					| circle |
 					circle := BlElement new
 							size: 30 @ 30;
 							addChild: ((BlTextElement new
 									text: (field number asString asRopedText foreground: Color white))
 									asScalableElement maxScale: 1);
-							background: Color black;
+							background: Color gray;
 							geometry: BlCircleGeometry new;
 							relocate: field coordinate - (15 @ 15);
 							when: BlClickEvent
 								do: [ :event | event target phlow spawnObject: field ].
 					boardElement addChild: circle ].
-
-			{100 @ 100 -> (250 @ 100).
-				250 @ 100 -> (400 @ 100).
-				400 @ 100 -> (400 @ 250).
-				400 @ 250 -> (400 @ 400).
-				400 @ 400 -> (250 @ 400).
-				250 @ 400 -> (100 @ 400).
-				100 @ 400 -> (100 @ 250).
-				100 @ 400 -> (100 @ 100).
-				150 @ 150 -> (250 @ 150).
-				250 @ 150 -> (350 @ 150).
-				350 @ 150 -> (350 @ 250).
-				350 @ 250 -> (350 @ 350).
-				350 @ 350 -> (250 @ 350).
-				250 @ 350 -> (150 @ 350).
-				150 @ 350 -> (150 @ 250).
-				150 @ 250 -> (150 @ 150).
-				350 @ 350 -> (250 @ 350).
-				200 @ 200 -> (250 @ 200).
-				250 @ 200 -> (300 @ 200).
-				300 @ 200 -> (300 @ 250).
-				300 @ 250 -> (300 @ 300).
-				300 @ 300 -> (250 @ 300).
-				250 @ 300 -> (200 @ 300).
-				200 @ 300 -> (200 @ 250).
-				200 @ 250 -> (200 @ 200).
-				100 @ 250 -> (200 @ 250).
-				250 @ 400 -> (250 @ 300).
-				400 @ 250 -> (300 @ 250).
-				250 @ 100 -> (250 @ 200)}
-				do: [ :association | 
-					line := BlLineElement new
-							fromAnchor: (BlAbsolutePositionAnchor position: association key);
-							toAnchor: (BlAbsolutePositionAnchor position: association value);
-							border: (BlBorder paint: Color black width: 1).
-					boardElement addChild: line ].
-
-			boardElement ].
+			fields
+				do: [ :aField | 
+					| line |
+					aField connectedFields
+						do: [ :aConnectedField | 
+							line := BlLineElement new
+									zIndex: -1;
+									fromAnchor: (BlAbsolutePositionAnchor position: aField coordinate);
+									toAnchor: (BlAbsolutePositionAnchor position: aConnectedField coordinate);
+									border: (BlBorder paint: Color black width: 1).
+							boardElement addChild: line ] ].
+			self players
+				do: [ :aPlayer | 
+					| circle |
+					aPlayer tokens
+						do: [ :aToken | 
+							(aToken state isKindOf: MorrisTokenOnField)
+								ifTrue: [ circle := BlElement new
+											size: 20 @ 20;
+											background: aPlayer color;
+											geometry: BlCircleGeometry new;
+											relocate: aToken state field coordinate - (10 @ 10);
+											when: BlClickEvent
+												do: [ :event | event target phlow spawnObject: aToken ].
+									boardElement addChild: circle ] ] ].
+			boardElement ]
 ]
 
 { #category : #accessing }
@@ -149,8 +138,8 @@ Morris >> gtFieldsFor: aView [
 Morris >> initialize [
 	| connectedFields |
 	super initialize.
-	playerA := MorrisPlayer new name: 'A'.
-	playerB := MorrisPlayer new name: 'B'.
+	playerA := MorrisPlayer new name: 'A'; color: Color orange.
+	playerB := MorrisPlayer new name: 'B'; color: Color blue.
 	fields := (1 to: 24)
 			collect: [ :i | 
 				MorrisField new

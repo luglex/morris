@@ -9,6 +9,11 @@ Class {
 	#category : #Morris
 }
 
+{ #category : #accessing }
+MorrisField >> connectedFields [
+	^ connectedFields
+]
+
 { #category : #'as yet unclassified' }
 MorrisField >> connectedFields: aCollection [ 
 	connectedFields := aCollection

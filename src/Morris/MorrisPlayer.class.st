@@ -3,10 +3,21 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'name',
-		'tokens'
+		'tokens',
+		'color'
 	],
 	#category : #Morris
 }
+
+{ #category : #accessing }
+MorrisPlayer >> color [
+	^ color
+]
+
+{ #category : #accessing }
+MorrisPlayer >> color: aColor [
+	color := aColor
+]
 
 { #category : #accessing }
 MorrisPlayer >> gtTokensFor: aView [
