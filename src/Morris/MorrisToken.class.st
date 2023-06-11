@@ -9,6 +9,11 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
+MorrisToken >> beCaptured [
+	state := MorrisTokenCaptured new
+]
+
+{ #category : #'as yet unclassified' }
 MorrisToken >> beOnField: aMorrisField [ 
 	state := MorrisTokenOnField new field: aMorrisField.
 ]
@@ -21,12 +26,17 @@ MorrisToken >> gtDisplayOn: stream [
 { #category : #accessing }
 MorrisToken >> initialize [
 	super initialize.
-	state := #inHand
+	state := MorrisTokenInHand new
 ]
 
 { #category : #'as yet unclassified' }
+MorrisToken >> isCaptured [
+	^ state class = MorrisTokenCaptured
+]
+
+{ #category : #accessing }
 MorrisToken >> isInHand [
-	^ state = #inHand
+	^ state isKindOf: MorrisTokenInHand
 ]
 
 { #category : #'as yet unclassified' }

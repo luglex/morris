@@ -120,7 +120,29 @@ Morris >> gtBoardWithFieldNumbersFor: aView [
 											relocate: aToken state field coordinate - (10 @ 10);
 											when: BlClickEvent
 												do: [ :event | event target phlow spawnObject: aToken ].
-									boardElement addChild: circle ] ] ].
+									boardElement addChild: circle ] ].
+					(aPlayer tokens
+						select: [ :aToken | aToken state isKindOf: MorrisTokenInHand ])
+						doWithIndex: [ :aToken :index | 
+							circle := BlElement new
+									size: 20 @ 20;
+									background: aPlayer color;
+									geometry: BlCircleGeometry new;
+									relocate: (aPlayer = playerA ifTrue: [ 20 ] ifFalse: [ 460 ]) @ (index * 25);
+									when: BlClickEvent
+										do: [ :event | event target phlow spawnObject: aToken ].
+							boardElement addChild: circle ].
+					(aPlayer tokens
+						select: [ :aToken | aToken state isKindOf: MorrisTokenCaptured ])
+						doWithIndex: [ :aToken :index | 
+							circle := BlElement new
+									size: 20 @ 20;
+									background: aPlayer color;
+									geometry: BlCircleGeometry new;
+									relocate: (aPlayer = playerA ifTrue: [ 430 ] ifFalse: [ 50 ]) @ (index * 25);
+									when: BlClickEvent
+										do: [ :event | event target phlow spawnObject: aToken ].
+							boardElement addChild: circle ] ].
 			boardElement ]
 ]
 

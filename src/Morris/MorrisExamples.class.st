@@ -15,6 +15,22 @@ MorrisExamples >> emptyMorris [
 ]
 
 { #category : #accessing }
+MorrisExamples >> morrisTokenCaptured [
+	<gtExample>
+	| morris playerA tokenA1 playerB tokenB1 |
+	morris := self emptyMorris.
+	playerA := morris playerA.
+	playerB := morris playerB.
+	tokenA1 := playerA tokens first.
+	tokenB1 := playerB tokens first.
+	tokenB1 beCaptured.
+	tokenA1 beCaptured.
+	self assert: tokenA1 isCaptured.
+	self assert: tokenB1 isCaptured.
+	^ morris
+]
+
+{ #category : #accessing }
 MorrisExamples >> morrisWithTokens [
 	<gtExample>
 	| morris playerA tokenA1 field5 |
