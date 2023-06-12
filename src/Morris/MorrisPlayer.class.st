@@ -42,6 +42,11 @@ MorrisPlayer >> name: aString [
 ]
 
 { #category : #'as yet unclassified' }
+MorrisPlayer >> second [
+	self shouldBeImplemented.
+]
+
+{ #category : #'as yet unclassified' }
 MorrisPlayer >> tokens [
 	^ tokens
 ]

@@ -139,7 +139,7 @@ Morris >> gtBoardWithFieldNumbersFor: aView [
 									size: 20 @ 20;
 									background: aPlayer color;
 									geometry: BlCircleGeometry new;
-									relocate: (aPlayer = playerA ifTrue: [ 430 ] ifFalse: [ 50 ]) @ (index * 25);
+									relocate: (aPlayer = playerA ifTrue: [ 460 ] ifFalse: [ 20 ]) @ (480 - (index * 25));
 									when: BlClickEvent
 										do: [ :event | event target phlow spawnObject: aToken ].
 							boardElement addChild: circle ] ].

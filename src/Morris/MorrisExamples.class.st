@@ -15,22 +15,6 @@ MorrisExamples >> emptyMorris [
 ]
 
 { #category : #accessing }
-MorrisExamples >> morrisTokenCaptured [
-	<gtExample>
-	| morris playerA tokenA1 playerB tokenB1 |
-	morris := self emptyMorris.
-	playerA := morris playerA.
-	playerB := morris playerB.
-	tokenA1 := playerA tokens first.
-	tokenB1 := playerB tokens first.
-	tokenB1 beCaptured.
-	tokenA1 beCaptured.
-	self assert: tokenA1 isCaptured.
-	self assert: tokenB1 isCaptured.
-	^ morris
-]
-
-{ #category : #accessing }
 MorrisExamples >> morrisWithTokens [
 	<gtExample>
 	| morris playerA tokenA1 field5 |
@@ -45,6 +29,36 @@ MorrisExamples >> morrisWithTokens [
 	self assert: tokenA1 isOnField.
 	self assert: (tokenA1 isOnField: 5).
 	self assert: tokenA1 isInHand not.
+	^ morris
+]
+
+{ #category : #accessing }
+MorrisExamples >> morrisWithTwoPlayerACapturedTokens [
+	<gtExample>
+	| morris playerA tokenA1 tokenA2 |
+	morris := self emptyMorris.
+	playerA := morris playerA.
+	tokenA1 := playerA tokens first.
+	tokenA2 := playerA tokens second.
+	tokenA1 beCaptured.
+	tokenA2 beCaptured.
+	self assert: tokenA1 isCaptured.
+	self assert: tokenA2 isCaptured.
+	^ morris
+]
+
+{ #category : #accessing }
+MorrisExamples >> morrisWithTwoPlayerBCapturedTokens [
+	<gtExample>
+	| morris  tokenB1 tokenB2 playerB |
+	morris := self emptyMorris.
+	playerB := morris playerB.
+	tokenB1 := playerB tokens first.
+	tokenB2 := playerB tokens second.
+	tokenB1 beCaptured.
+	tokenB2 beCaptured.
+	self assert: tokenB1 isCaptured.
+	self assert: tokenB2 isCaptured.
 	^ morris
 ]
 
