@@ -67,83 +67,29 @@ Morris >> fieldCoordinates [
 		200 @ 250}.
 ]
 
+{ #category : #'as yet unclassified' }
+Morris >> fieldHasToken: aField [
+	^ self players
+		anySatisfy: [ :aPlayer | aPlayer tokens anySatisfy: [ :aToken | aToken isOnField: aField ] ]
+]
+
 { #category : #accessing }
 Morris >> fields [
 	^ fields
 ]
 
 { #category : #accessing }
+Morris >> fields: anObject [
+	fields := anObject
+]
+
+{ #category : #accessing }
 Morris >> gtBoardWithFieldNumbersFor: aView [
 	<gtView>
-	| boardElement |
 	^ aView explicit
 		title: 'Board with field numbers';
 		priority: 1;
-		stencil: [ boardElement := BlElement new
-					size: 500 @ 500;
-					background: Color veryVeryLightGray.
-			fields
-				do: [ :field | 
-					| circle |
-					circle := BlElement new
-							size: 30 @ 30;
-							addChild: ((BlTextElement new
-									text: (field number asString asRopedText foreground: Color white))
-									asScalableElement maxScale: 1);
-							background: Color gray;
-							geometry: BlCircleGeometry new;
-							relocate: field coordinate - (15 @ 15);
-							when: BlClickEvent
-								do: [ :event | event target phlow spawnObject: field ].
-					boardElement addChild: circle ].
-			fields
-				do: [ :aField | 
-					| line |
-					aField connectedFields
-						do: [ :aConnectedField | 
-							line := BlLineElement new
-									zIndex: -1;
-									fromAnchor: (BlAbsolutePositionAnchor position: aField coordinate);
-									toAnchor: (BlAbsolutePositionAnchor position: aConnectedField coordinate);
-									border: (BlBorder paint: Color black width: 1).
-							boardElement addChild: line ] ].
-			self players
-				do: [ :aPlayer | 
-					| circle |
-					aPlayer tokens
-						do: [ :aToken | 
-							(aToken state isKindOf: MorrisTokenOnField)
-								ifTrue: [ circle := BlElement new
-											size: 20 @ 20;
-											background: aPlayer color;
-											geometry: BlCircleGeometry new;
-											relocate: aToken state field coordinate - (10 @ 10);
-											when: BlClickEvent
-												do: [ :event | event target phlow spawnObject: aToken ].
-									boardElement addChild: circle ] ].
-					(aPlayer tokens
-						select: [ :aToken | aToken state isKindOf: MorrisTokenInHand ])
-						doWithIndex: [ :aToken :index | 
-							circle := BlElement new
-									size: 20 @ 20;
-									background: aPlayer color;
-									geometry: BlCircleGeometry new;
-									relocate: (aPlayer = playerA ifTrue: [ 20 ] ifFalse: [ 460 ]) @ (index * 25);
-									when: BlClickEvent
-										do: [ :event | event target phlow spawnObject: aToken ].
-							boardElement addChild: circle ].
-					(aPlayer tokens
-						select: [ :aToken | aToken state isKindOf: MorrisTokenCaptured ])
-						doWithIndex: [ :aToken :index | 
-							circle := BlElement new
-									size: 20 @ 20;
-									background: aPlayer color;
-									geometry: BlCircleGeometry new;
-									relocate: (aPlayer = playerA ifTrue: [ 460 ] ifFalse: [ 20 ]) @ (480 - (index * 25));
-									when: BlClickEvent
-										do: [ :event | event target phlow spawnObject: aToken ].
-							boardElement addChild: circle ] ].
-			boardElement ]
+		stencil: [ MorrisElement new morris: self ]
 ]
 
 { #category : #accessing }
@@ -180,6 +126,11 @@ Morris >> playerA [
 	^playerA
 ]
 
+{ #category : #accessing }
+Morris >> playerA: anObject [
+	playerA := anObject
+]
+
 { #category : #'as yet unclassified' }
 Morris >> playerB [
 	^ playerB
@@ -188,4 +139,31 @@ Morris >> playerB [
 { #category : #accessing }
 Morris >> players [
 	^ {playerA.playerB}
+]
+
+{ #category : #accessing }
+Morris >> token: aMorrisToken canPlayOnField: anInteger [ 
+	| field |
+	field := fields at: anInteger.
+	^ aMorrisToken canPlayOnField: field from: self
+]
+
+{ #category : #accessing }
+Morris >> tokenA1 [
+	^ playerA token1
+]
+
+{ #category : #accessing }
+Morris >> tokenA2 [
+	^ playerA token2
+]
+
+{ #category : #accessing }
+Morris >> tokenA3 [
+	^ playerA token3
+]
+
+{ #category : #'as yet unclassified' }
+Morris >> tokenB1 [
+	^ playerB token1
 ]

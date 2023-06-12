@@ -19,6 +19,11 @@ MorrisToken >> beOnField: aMorrisField [
 ]
 
 { #category : #accessing }
+MorrisToken >> canPlayOnField: aField from: aMorris [
+	^ state canPlayOnField: aField from: aMorris
+]
+
+{ #category : #accessing }
 MorrisToken >> gtDisplayOn: stream [
 	stream nextPutAll: name
 ]
@@ -44,9 +49,14 @@ MorrisToken >> isOnField [
 	^ state class = MorrisTokenOnField.
 ]
 
-{ #category : #'as yet unclassified' }
-MorrisToken >> isOnField: anInteger [
-	^ state field number = anInteger.
+{ #category : #accessing }
+MorrisToken >> isOnField: aMorrisField [ 
+	^ self isOnField and: [ state field = aMorrisField ]
+]
+
+{ #category : #accessing }
+MorrisToken >> isOnFieldNumber: anInteger [
+	^ self isOnField and: [ state field number = anInteger ]
 ]
 
 { #category : #'as yet unclassified' }

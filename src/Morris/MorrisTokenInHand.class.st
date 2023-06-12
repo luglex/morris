@@ -1,8 +1,13 @@
 Class {
 	#name : #MorrisTokenInHand,
-	#superclass : #Object,
+	#superclass : #MorrisState,
 	#category : #Morris
 }
+
+{ #category : #accessing }
+MorrisTokenInHand >> canPlayOnField: aField from: aMorris [
+	^ (aMorris fieldHasToken: aField) not
+]
 
 { #category : #accessing }
 MorrisTokenInHand >> gtDisplayOn: stream [

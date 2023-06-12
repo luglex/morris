@@ -1,5 +1,5 @@
 Class {
 	#name : #MorrisTokenCaptured,
-	#superclass : #Object,
+	#superclass : #MorrisState,
 	#category : #Morris
 }

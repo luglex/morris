@@ -46,6 +46,51 @@ MorrisPlayer >> second [
 	self shouldBeImplemented.
 ]
 
+{ #category : #accessing }
+MorrisPlayer >> token1 [
+	^ tokens at: 1
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token2 [
+	^ tokens at: 2
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token3 [
+	^ tokens at: 3
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token4 [
+	^ tokens at: 4
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token5 [
+	^ tokens at: 5
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token6 [
+	^ tokens at: 6
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token7 [
+	^ tokens at: 7
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token8 [
+	^ tokens at: 8
+]
+
+{ #category : #accessing }
+MorrisPlayer >> token9 [
+	^ tokens at: 9
+]
+
 { #category : #'as yet unclassified' }
 MorrisPlayer >> tokens [
 	^ tokens
