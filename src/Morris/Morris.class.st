@@ -24,7 +24,7 @@ Morris >> fieldConnections [
 		11 -> {10 . 12}.
 		12 -> {4 . 11 . 13}.
 		13 -> {12 . 14}.
-		14 -> {13 . 15 . 22}.
+		14 -> {6. 13 . 15 . 22}.
 		15 -> {14 . 16}.
 		16 -> {9 . 15 . 24}.
 		17 -> {18 . 24}.
@@ -122,6 +122,22 @@ Morris >> initialize [
 ]
 
 { #category : #accessing }
+Morris >> move: aToken toField: aField [
+	(aToken canPlayOnField: aField from: self)
+		ifFalse: [ self error: 'Token can not move!' ].
+	aToken beOnField: aField.
+]
+
+{ #category : #accessing }
+Morris >> move: aToken toFieldNumber: anInteger [
+	| field |
+	field := fields at: anInteger.
+	(aToken canPlayOnField: field from: self)
+		ifFalse: [ self error: 'Token can not move!' ].
+	aToken beOnField: field.
+]
+
+{ #category : #accessing }
 Morris >> playerA [
 	^playerA
 ]
@@ -142,7 +158,7 @@ Morris >> players [
 ]
 
 { #category : #accessing }
-Morris >> token: aMorrisToken canPlayOnField: anInteger [ 
+Morris >> token: aMorrisToken canPlayOnFieldNumber: anInteger [ 
 	| field |
 	field := fields at: anInteger.
 	^ aMorrisToken canPlayOnField: field from: self
@@ -163,7 +179,77 @@ Morris >> tokenA3 [
 	^ playerA token3
 ]
 
+{ #category : #accessing }
+Morris >> tokenA4 [
+	^ playerA token4
+]
+
+{ #category : #accessing }
+Morris >> tokenA5 [
+	^ playerA token5
+]
+
+{ #category : #accessing }
+Morris >> tokenA6 [
+	^ playerA token6
+]
+
+{ #category : #accessing }
+Morris >> tokenA7 [
+	^ playerA token7
+]
+
+{ #category : #accessing }
+Morris >> tokenA8 [
+	^ playerA token8
+]
+
+{ #category : #accessing }
+Morris >> tokenA9 [
+	^ playerA token9
+]
+
 { #category : #'as yet unclassified' }
 Morris >> tokenB1 [
 	^ playerB token1
+]
+
+{ #category : #accessing }
+Morris >> tokenB2 [
+	^ playerB token2
+]
+
+{ #category : #accessing }
+Morris >> tokenB3 [
+	^ playerB token3
+]
+
+{ #category : #accessing }
+Morris >> tokenB4 [
+	^ playerB token4
+]
+
+{ #category : #accessing }
+Morris >> tokenB5 [
+	^ playerB token5
+]
+
+{ #category : #accessing }
+Morris >> tokenB6 [
+	^ playerB token6
+]
+
+{ #category : #accessing }
+Morris >> tokenB7 [
+	^ playerB token7
+]
+
+{ #category : #accessing }
+Morris >> tokenB8 [
+	^ playerB token8
+]
+
+{ #category : #accessing }
+Morris >> tokenB9 [
+	^ playerB token9
 ]

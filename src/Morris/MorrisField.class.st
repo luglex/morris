@@ -30,6 +30,14 @@ MorrisField >> coordinate: aPoint [
 ]
 
 { #category : #accessing }
+MorrisField >> gtConnectedFieldsFor: aView [ 
+	<gtView>
+	^ aView list 
+		title: 'Connected fields';
+		items: [ connectedFields ]
+]
+
+{ #category : #accessing }
 MorrisField >> gtDisplayOn: stream [
 	stream
 		nextPutAll: 'Field ';
