@@ -21,6 +21,8 @@ MorrisExamples >> morrisGameA1To5 [
 	morris := self emptyMorris.
 	morris move: morris tokenA1 toFieldNumber: 5.
 	self assert: (morris tokenA1 isOnFieldNumber: 5).
+	self assert: (morris moves size = 1).
+	self assert: (morris moves last isFinished).
 	^ morris
 ]
 
@@ -31,6 +33,9 @@ MorrisExamples >> morrisGameA2From14To6 [
 	morris := self morrisGameB9To3.
 	morris move: morris tokenA2 toFieldNumber: 6.
 	self assert: (morris tokenA2 isOnFieldNumber: 6).
+	self assert: (morris moves last isFinished not).
+	morris captureTokenFromFieldNumber: 13.
+	self assert: (morris moves last isFinished).
 	^ morris
 ]
 

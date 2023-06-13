@@ -4,10 +4,26 @@ Class {
 	#instVars : [
 		'playerA',
 		'playerB',
-		'fields'
+		'fields',
+		'moves'
 	],
 	#category : #Morris
 }
+
+{ #category : #'as yet unclassified' }
+Morris >> captureTokenFromFieldNumber: anInteger [
+	| opponentPlayer |
+	self assert: moves last isFinished not.
+	opponentPlayer := self opponentOf: moves last token player.
+	opponentPlayer tokens
+		detect: [ :aToken | 
+			(aToken state isKindOf: MorrisTokenOnField)
+				and: [ aToken state field number = anInteger ] ]
+		ifFound: [ :aToken | 
+			moves last captured: aToken.
+			aToken beCaptured ]
+		ifNone: [ self error: 'there should be an opponent token on this field' ]
+]
 
 { #category : #accessing }
 Morris >> fieldConnections [
@@ -74,6 +90,19 @@ Morris >> fieldHasToken: aField [
 ]
 
 { #category : #accessing }
+Morris >> fieldNumbersWithPossibleMorris [
+	^ {{1.
+			2.
+			3}.
+		{3.
+			4.
+			5}.
+		{5.
+			6.
+			7}}
+]
+
+{ #category : #accessing }
 Morris >> fields [
 	^ fields
 ]
@@ -103,6 +132,30 @@ Morris >> gtFieldsFor: aView [
 ]
 
 { #category : #accessing }
+Morris >> gtMovesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Moves';
+		items: [ moves ];
+		column: 'Token' text: [ :aMove | aMove token gtDisplayString ];
+		column: 'From'
+			text: [ :aMove | (aMove fromField ifNil: [ 'In hand' ]) gtDisplayString ];
+		column: 'To field' text: [ :aMove | aMove toField gtDisplayString ];
+		column: 'Has morris' text: [ :aMove | aMove hasMorris ];
+		column: 'Captured' text: [ :aMove | (aMove captured ifNil: ['']) gtDisplayString ]	
+]
+
+{ #category : #accessing }
+Morris >> hasMorris [
+	^ self fieldNumbersWithPossibleMorris anySatisfy: [ :anArray | 
+		(anArray includes: moves last token state field number) and: [
+			anArray allSatisfy: [ :aFieldNumber | 
+				(moves last token player tokens) anySatisfy: [ :aToken | 
+					(aToken state isKindOf: MorrisTokenOnField) and: [
+						aToken state field number = aFieldNumber ] ]] ] ]
+]
+
+{ #category : #accessing }
 Morris >> initialize [
 	| connectedFields |
 	super initialize.
@@ -118,7 +171,8 @@ Morris >> initialize [
 			| field |
 			field := fields at: each key.
 			connectedFields := each value collect: [ :aNumber | fields at: aNumber].
-			field connectedFields: connectedFields ]
+			field connectedFields: connectedFields ].
+	moves := OrderedCollection new
 ]
 
 { #category : #accessing }
@@ -130,11 +184,28 @@ Morris >> move: aToken toField: aField [
 
 { #category : #accessing }
 Morris >> move: aToken toFieldNumber: anInteger [
-	| field |
+	| field move |
 	field := fields at: anInteger.
 	(aToken canPlayOnField: field from: self)
 		ifFalse: [ self error: 'Token can not move!' ].
+	move := MorrisMove new
+			token: aToken;
+			toField: field.
+	(aToken state isKindOf: MorrisTokenOnField)
+		ifTrue: [ move fromField: aToken state field ].
 	aToken beOnField: field.
+	moves add: move.
+	move hasMorris: self hasMorris
+]
+
+{ #category : #accessing }
+Morris >> moves [
+	^ moves
+]
+
+{ #category : #accessing }
+Morris >> opponentOf: aPlayer [
+	^ aPlayer = playerA ifTrue: [ playerB ] ifFalse: [ playerA ]
 ]
 
 { #category : #accessing }

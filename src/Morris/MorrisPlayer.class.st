@@ -32,7 +32,7 @@ MorrisPlayer >> gtTokensFor: aView [
 { #category : #accessing }
 MorrisPlayer >> initialize [
 	super initialize.
-	tokens := (1 to: 9) collect: [ :i | MorrisToken new  ]
+	tokens := (1 to: 9) collect: [ :i | MorrisToken new player: self ]
 ]
 
 { #category : #accessing }

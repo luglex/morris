@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'name',
-		'state'
+		'state',
+		'player'
 	],
 	#category : #Morris
 }
@@ -67,6 +68,16 @@ MorrisToken >> name [
 { #category : #accessing }
 MorrisToken >> name: aString [ 
 	name := aString
+]
+
+{ #category : #accessing }
+MorrisToken >> player [
+	^ player
+]
+
+{ #category : #accessing }
+MorrisToken >> player: aPlayer [
+	player := aPlayer
 ]
 
 { #category : #accessing }
