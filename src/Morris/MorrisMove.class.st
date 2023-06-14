@@ -63,6 +63,11 @@ MorrisMove >> isGameOver: aBoolean [
 ]
 
 { #category : #accessing }
+MorrisMove >> player [
+	^ token player
+]
+
+{ #category : #accessing }
 MorrisMove >> toField [
 	^ toField
 ]

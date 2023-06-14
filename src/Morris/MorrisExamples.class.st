@@ -15,6 +15,26 @@ MorrisExamples >> emptyMorris [
 ]
 
 { #category : #accessing }
+MorrisExamples >> morrisAboutToBeGameOver [
+	<gtExample>
+	| morris |
+	morris := self emptyMorris.
+	morris tokenA1 beOnField: (morris fields at: 1).
+	morris tokenA2 beOnField: (morris fields at: 10).
+	morris tokenA3 beOnField: (morris fields at: 3).
+	morris tokenB1 beCaptured.
+	morris tokenB2 beCaptured.
+	morris tokenB3 beCaptured.
+	morris tokenB4 beCaptured.
+	morris tokenB5 beCaptured.
+	morris tokenB6 beCaptured.
+	morris tokenB7 beOnField: (morris fields at: 15).
+	morris tokenB8 beOnField: (morris fields at: 23).
+	morris tokenB9 beOnField: (morris fields at: 5).
+	^ morris
+]
+
+{ #category : #accessing }
 MorrisExamples >> morrisGameA1To5 [
 	<gtExample>
 	| morris |
@@ -262,20 +282,8 @@ MorrisExamples >> morrisPlayer [
 MorrisExamples >> morrisWithGameOver [
 	<gtExample>
 	| morris |
-	morris := self emptyMorris.
-	morris tokenA1 beOnField: (morris fields at: 1).
-	morris tokenA2 beOnField: (morris fields at: 10).
-	morris tokenA3 beOnField: (morris fields at: 3).
-	morris tokenB1 beCaptured.
-	morris tokenB2 beCaptured.
-	morris tokenB3 beCaptured.
-	morris tokenB4 beCaptured.
-	morris tokenB5 beCaptured.
-	morris tokenB6 beCaptured.
-	morris tokenB7 beOnField: (morris fields at: 15).
-	morris tokenB8 beOnField: (morris fields at: 23).
-	morris tokenB9 beOnField: (morris fields at: 5).
-	morris move: morris tokenA2  toFieldNumber: 2.
+	morris := self morrisAboutToBeGameOver.
+	morris move: morris tokenA2 toFieldNumber: 2.
 	morris captureTokenFromFieldNumber: 23.
 	self assert: morris isGameOver.
 	^ morris

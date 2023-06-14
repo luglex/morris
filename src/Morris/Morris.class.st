@@ -205,6 +205,13 @@ Morris >> isGameOver [
 	^ moves notEmpty and: [ moves last isGameOver ]
 ]
 
+{ #category : #accessing }
+Morris >> isPlayerAToMove [
+	^ moves isEmpty
+		or: [ (moves last player = playerB and: [ moves last isFinished ])
+				or: (moves last player = playerA and: [ moves last isFinished not ]) ]
+]
+
 { #category : #move }
 Morris >> move: aToken toField: aField [
 	(aToken canPlayOnField: aField from: self)

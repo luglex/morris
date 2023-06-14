@@ -21,6 +21,7 @@ MorrisElement >> initializeBoard [
 		aptitude: BrShadowAptitude new beLarge;
 		margin: (BlInsets all: 20).
 	self removeChildren.
+	self initializePlayerLabels.
 	self initializeFields.
 	self initializeFieldConnections.
 	self initializeTokens
@@ -81,6 +82,41 @@ MorrisElement >> initializeFields [
 ]
 
 { #category : #accessing }
+MorrisElement >> initializePlayerLabels [
+	morris isGameOver
+		ifTrue: [ | gameOverLabel |
+			gameOverLabel := BrLabel new
+					text: 'Player ', morris moves last player name , ' has won the game!';
+					aptitude: (BrGlamorousLabelAptitude new 					fontSize: 20);
+					background: morris moves last player color;
+					width: 400;
+					alignCenter;
+					relocate: 50 @ 5.
+			self addChild: gameOverLabel ]
+		ifFalse: [ | playerALabel playerBLabel |
+			playerALabel := BrLabel new
+					text: 'Player A';
+					aptitude: BrGlamorousLabelAptitude;
+					background: (morris isPlayerAToMove
+							ifTrue: [ morris playerA color ]
+							ifFalse: [ Color transparent ]);
+					width: 60;
+					alignCenter;
+					relocate: 5 @ 5.
+			playerBLabel := BrLabel new
+					text: 'Player B';
+					aptitude: BrGlamorousLabelAptitude;
+					background: (morris isPlayerAToMove not
+							ifTrue: [ morris playerB color ]
+							ifFalse: [ Color transparent ]);
+					width: 60;
+					alignCenter;
+					relocate: 435 @ 5.
+			self addChild: playerALabel.
+			self addChild: playerBLabel ]
+]
+
+{ #category : #accessing }
 MorrisElement >> initializeTokens [
 	self morris players
 		do: [ :aPlayer | 
@@ -90,7 +126,7 @@ MorrisElement >> initializeTokens [
 				select: [ :aToken | aToken state isKindOf: MorrisTokenInHand ])
 				doWithIndex: [ :aToken :index | 
 					circle := aToken asElement
-							relocate: (aPlayer = self morris playerA ifTrue: [ 20 ] ifFalse: [ 460 ]) @ (index * 25);
+							relocate: (aPlayer = self morris playerA ifTrue: [ 25 ] ifFalse: [ 455 ]) @ (index * 25 + 20);
 							when: BlClickEvent
 								do: [ :event | 
 									event modifiers isPrimaryModifier
@@ -101,7 +137,7 @@ MorrisElement >> initializeTokens [
 				select: [ :aToken | aToken state isKindOf: MorrisTokenCaptured ])
 				doWithIndex: [ :aToken :index | 
 					circle := aToken asElement
-							relocate: (aPlayer = self morris playerA ifTrue: [ 460 ] ifFalse: [ 20 ])
+							relocate: (aPlayer = self morris playerA ifTrue: [ 455 ] ifFalse: [ 25 ])
 									@ (480 - (index * 25));
 							when: BlClickEvent
 								do: [ :event | 

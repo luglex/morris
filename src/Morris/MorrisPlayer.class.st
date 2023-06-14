@@ -36,6 +36,11 @@ MorrisPlayer >> initialize [
 ]
 
 { #category : #accessing }
+MorrisPlayer >> name [
+	^ name
+]
+
+{ #category : #accessing }
 MorrisPlayer >> name: aString [ 
 	name := aString.
 	tokens withIndexDo: [:each :i | each name: name, i asString ]
