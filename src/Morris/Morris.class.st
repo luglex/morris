@@ -10,7 +10,7 @@ Class {
 	#category : #Morris
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #move }
 Morris >> captureTokenFromFieldNumber: anInteger [
 	| opponentPlayer |
 	self assert: moves last isFinished not.
@@ -83,7 +83,7 @@ Morris >> fieldCoordinates [
 		200 @ 250}.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #move }
 Morris >> fieldHasToken: aField [
 	^ self players
 		anySatisfy: [ :aPlayer | aPlayer tokens anySatisfy: [ :aToken | aToken isOnField: aField ] ]
@@ -120,7 +120,7 @@ Morris >> fields: anObject [
 	fields := anObject
 ]
 
-{ #category : #accessing }
+{ #category : #views }
 Morris >> gtBoardWithFieldNumbersFor: aView [
 	<gtView>
 	^ aView explicit
@@ -129,7 +129,7 @@ Morris >> gtBoardWithFieldNumbersFor: aView [
 		stencil: [ MorrisElement new morris: self ]
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 Morris >> gtFieldsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -139,7 +139,7 @@ Morris >> gtFieldsFor: aView [
 		column: 'Coordinate' text: [:field | field coordinate gtDisplayString ].
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 Morris >> gtMovesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -153,7 +153,7 @@ Morris >> gtMovesFor: aView [
 		column: 'Captured' text: [ :aMove | (aMove captured ifNil: ['']) gtDisplayString ]	
 ]
 
-{ #category : #accessing }
+{ #category : #view }
 Morris >> gtTokensFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -197,14 +197,14 @@ Morris >> initialize [
 	moves := OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : #move }
 Morris >> move: aToken toField: aField [
 	(aToken canPlayOnField: aField from: self)
 		ifFalse: [ self error: 'Token can not move!' ].
 	aToken beOnField: aField.
 ]
 
-{ #category : #accessing }
+{ #category : #move }
 Morris >> move: aToken toFieldNumber: anInteger [
 	| field move |
 	field := fields at: anInteger.
@@ -240,7 +240,7 @@ Morris >> playerA: anObject [
 	playerA := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Morris >> playerB [
 	^ playerB
 ]
@@ -250,7 +250,7 @@ Morris >> players [
 	^ {playerA.playerB}
 ]
 
-{ #category : #accessing }
+{ #category : #move }
 Morris >> token: aMorrisToken canPlayOnFieldNumber: anInteger [ 
 	| field |
 	field := fields at: anInteger.
