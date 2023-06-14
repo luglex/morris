@@ -21,7 +21,9 @@ Morris >> captureTokenFromFieldNumber: anInteger [
 				and: [ aToken state field number = anInteger ] ]
 		ifFound: [ :aToken | 
 			moves last captured: aToken.
-			aToken beCaptured ]
+			aToken beCaptured.
+			opponentPlayer numberOfTokensCaptured >= 7
+				ifTrue: [ moves last isGameOver: true ] ]
 		ifNone: [ self error: 'there should be an opponent token on this field' ]
 ]
 
@@ -150,7 +152,8 @@ Morris >> gtMovesFor: aView [
 			text: [ :aMove | (aMove fromField ifNil: [ 'In hand' ]) gtDisplayString ];
 		column: 'To field' text: [ :aMove | aMove toField gtDisplayString ];
 		column: 'Has morris' text: [ :aMove | aMove hasMorris ];
-		column: 'Captured' text: [ :aMove | (aMove captured ifNil: ['']) gtDisplayString ]	
+		column: 'Captured' text: [ :aMove | (aMove captured ifNil: ['']) gtDisplayString ];
+		column: 'Game over' text: [ :aMove | aMove isGameOver ]	
 ]
 
 { #category : #view }
@@ -302,7 +305,7 @@ Morris >> tokenA9 [
 	^ playerA token9
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 Morris >> tokenB1 [
 	^ playerB token1
 ]

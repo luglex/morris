@@ -42,6 +42,11 @@ MorrisPlayer >> name: aString [
 ]
 
 { #category : #'as yet unclassified' }
+MorrisPlayer >> numberOfTokensCaptured [
+	^ (tokens select: #isCaptured) size
+]
+
+{ #category : #'as yet unclassified' }
 MorrisPlayer >> second [
 	self shouldBeImplemented.
 ]

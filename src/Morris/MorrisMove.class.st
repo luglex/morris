@@ -6,7 +6,8 @@ Class {
 		'fromField',
 		'toField',
 		'hasMorris',
-		'captured'
+		'captured',
+		'isGameOver'
 	],
 	#category : #Morris
 }
@@ -42,8 +43,23 @@ MorrisMove >> hasMorris: aBoolean [
 ]
 
 { #category : #accessing }
+MorrisMove >> initialize [
+	isGameOver := false.
+]
+
+{ #category : #accessing }
 MorrisMove >> isFinished [
 	^ hasMorris not or: [hasMorris and: [ captured notNil ] ]
+]
+
+{ #category : #accessing }
+MorrisMove >> isGameOver [
+	^ isGameOver
+]
+
+{ #category : #'as yet unclassified' }
+MorrisMove >> isGameOver: aBoolean [ 
+	isGameOver := aBoolean
 ]
 
 { #category : #accessing }
