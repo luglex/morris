@@ -38,13 +38,13 @@ Morris >> fieldConnections [
 		7 -> {6 . 8}.
 		8 -> {1 . 7 . 16}.
 		9 -> {10 . 16}.
-		10 -> {9 . 11 . 18}.
+		10 -> {2 . 9 . 11 . 18}.
 		11 -> {10 . 12}.
-		12 -> {4 . 11 . 13}.
+		12 -> {4 . 11 . 13 . 20}.
 		13 -> {12 . 14}.
-		14 -> {6. 13 . 15 . 22}.
+		14 -> {6 . 13 . 15 . 22}.
 		15 -> {14 . 16}.
-		16 -> {9 . 15 . 24}.
+		16 -> {8 . 9 . 15 . 24}.
 		17 -> {18 . 24}.
 		18 -> {10 . 17 . 19}.
 		19 -> {18 . 20}.
@@ -198,6 +198,11 @@ Morris >> initialize [
 			connectedFields := each value collect: [ :aNumber | fields at: aNumber].
 			field connectedFields: connectedFields ].
 	moves := OrderedCollection new
+]
+
+{ #category : #accessing }
+Morris >> isGameOver [
+	^ moves notEmpty and: [ moves last isGameOver ]
 ]
 
 { #category : #move }
