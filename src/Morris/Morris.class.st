@@ -91,15 +91,23 @@ Morris >> fieldHasToken: aField [
 
 { #category : #accessing }
 Morris >> fieldNumbersWithPossibleMorris [
-	^ {{1.
-			2.
-			3}.
-		{3.
-			4.
-			5}.
-		{5.
-			6.
-			7}}
+	^ {
+		{1 . 2 . 3}.
+		{3 . 4 . 5}.
+		{5 . 6 . 7}.
+		{7 . 8 . 1}.
+		{9 . 10 . 11}.
+		{11 . 12 . 13}.
+		{13 . 14 . 15}.
+		{15 . 16 . 9}.
+		{17 . 18 . 19}.
+		{19 . 20 . 21}.
+		{21 . 22 . 23}.
+		{23 . 24 . 17}.
+		{8 . 16 . 24}.
+		{2 . 10 . 18}.
+		{4 . 12 . 20}.
+		{6 . 14 . 22} }
 ]
 
 { #category : #accessing }
@@ -143,6 +151,16 @@ Morris >> gtMovesFor: aView [
 		column: 'To field' text: [ :aMove | aMove toField gtDisplayString ];
 		column: 'Has morris' text: [ :aMove | aMove hasMorris ];
 		column: 'Captured' text: [ :aMove | (aMove captured ifNil: ['']) gtDisplayString ]	
+]
+
+{ #category : #accessing }
+Morris >> gtTokensFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Tokens';
+		items: [ self players flatCollect: #tokens ];
+		column: 'Token' text: #gtDisplayString;
+		column: 'State' text: [ :aToken | aToken state gtDisplayString ]
 ]
 
 { #category : #accessing }

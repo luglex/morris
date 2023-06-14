@@ -2,10 +2,16 @@ Class {
 	#name : #MorrisElement,
 	#superclass : #BlElement,
 	#instVars : [
-		'morris'
+		'morris',
+		'selectedToken'
 	],
 	#category : #Morris
 }
+
+{ #category : #accessing }
+MorrisElement >> hasSelectedToken [
+	^ selectedToken notNil
+]
 
 { #category : #accessing }
 MorrisElement >> initializeBoard [
@@ -14,6 +20,7 @@ MorrisElement >> initializeBoard [
 		background: Color white;
 		aptitude: BrShadowAptitude new beLarge;
 		margin: (BlInsets all: 20).
+	self removeChildren.
 	self initializeFields.
 	self initializeFieldConnections.
 	self initializeTokens
@@ -35,19 +42,41 @@ MorrisElement >> initializeFieldConnections [
 ]
 
 { #category : #accessing }
+MorrisElement >> initializeFieldTokensOfPlayer: aPlayer [
+	| circle |
+	aPlayer tokens
+		do: [ :aToken | 
+			(aToken state isKindOf: MorrisTokenOnField)
+				ifTrue: [ circle := aToken asElement
+							relocate: aToken state field coordinate - (10 @ 10);
+							when: BlClickEvent
+								do: [ :event | 
+									event modifiers isPrimaryModifier
+										ifTrue: [ event target phlow spawnObject: aToken ]
+										ifFalse: [ selectedToken isNil
+												ifTrue: [ selectedToken := aToken ]
+												ifFalse: [ morris moves last isFinished not
+														ifTrue: [ selectedToken := nil.
+															morris captureTokenFromFieldNumber: aToken state field number.
+															self initializeBoard ] ] ] ].
+					self addChild: circle ] ]
+]
+
+{ #category : #accessing }
 MorrisElement >> initializeFields [
 	self morris fields
 		do: [ :field | 
 			| circle |
-			circle := BlElement new
-					size: 30 @ 30;
-					addChild: ((BlTextElement new
-							text: (field number asString asRopedText foreground: Color white))
-							asScalableElement maxScale: 1);
-					background: Color veryLightGray;
-					geometry: BlCircleGeometry new;
+			circle := field asElementWithNumber
 					relocate: field coordinate - (15 @ 15);
-					when: BlClickEvent do: [ :event | event target phlow spawnObject: field ].
+					when: BlClickEvent
+						do: [ :event | 
+							event modifiers isPrimaryModifier
+								ifTrue: [ event target phlow spawnObject: field ]
+								ifFalse: [ selectedToken notNil
+										ifTrue: [ morris move: selectedToken toFieldNumber: field number.
+											self initializeBoard.
+											morris hasMorris ifFalse: [ selectedToken := nil ] ] ] ].
 			self addChild: circle ]
 ]
 
@@ -56,26 +85,11 @@ MorrisElement >> initializeTokens [
 	self morris players
 		do: [ :aPlayer | 
 			| circle |
-			aPlayer tokens
-				do: [ :aToken | 
-					(aToken state isKindOf: MorrisTokenOnField)
-						ifTrue: [ circle := BlElement new
-									size: 20 @ 20;
-									background: aPlayer color;
-									border: (BlBorder paint: aPlayer color muchDarker width: 3);
-									geometry: BlCircleGeometry new;
-									relocate: aToken state field coordinate - (10 @ 10);
-									when: BlClickEvent
-										do: [ :event | event target phlow spawnObject: aToken ].
-							self addChild: circle ] ].
+			self initializeFieldTokensOfPlayer: aPlayer.
 			(aPlayer tokens
 				select: [ :aToken | aToken state isKindOf: MorrisTokenInHand ])
 				doWithIndex: [ :aToken :index | 
-					circle := BlElement new
-							size: 20 @ 20;
-							background: aPlayer color;
-							border: (BlBorder paint: aPlayer color muchDarker width: 3);
-							geometry: BlCircleGeometry new;
+					circle := aToken asElement
 							relocate: (aPlayer = self morris playerA ifTrue: [ 20 ] ifFalse: [ 460 ]) @ (index * 25);
 							when: BlClickEvent
 								do: [ :event | event target phlow spawnObject: aToken ].
@@ -83,11 +97,7 @@ MorrisElement >> initializeTokens [
 			(aPlayer tokens
 				select: [ :aToken | aToken state isKindOf: MorrisTokenCaptured ])
 				doWithIndex: [ :aToken :index | 
-					circle := BlElement new
-							size: 20 @ 20;
-							background: aPlayer color;
-							border: (BlBorder paint: aPlayer color muchDarker width: 3);
-							geometry: BlCircleGeometry new;
+					circle := aToken asElement
 							relocate: (aPlayer = self morris playerA ifTrue: [ 460 ] ifFalse: [ 20 ])
 									@ (480 - (index * 25));
 							when: BlClickEvent
@@ -96,12 +106,22 @@ MorrisElement >> initializeTokens [
 ]
 
 { #category : #accessing }
+MorrisElement >> isMoveStarted [
+	^ selectedToken notNil
+]
+
+{ #category : #accessing }
+MorrisElement >> isToCaptureAfterMorris [
+	^ self hasSelectedToken not and: [ morris hasMorris ]
+]
+
+{ #category : #accessing }
 MorrisElement >> morris [
 	^ morris
 ]
 
 { #category : #accessing }
-MorrisElement >> morris: anObject [
-	morris := anObject.
+MorrisElement >> morris: aMorris [
+	morris := aMorris.
 	self initializeBoard
 ]

@@ -34,6 +34,7 @@ MorrisExamples >> morrisGameA2From14To6 [
 	morris move: morris tokenA2 toFieldNumber: 6.
 	self assert: (morris tokenA2 isOnFieldNumber: 6).
 	self assert: (morris moves last isFinished not).
+	self assert: (morris moves last hasMorris).
 	morris captureTokenFromFieldNumber: 13.
 	self assert: (morris moves last isFinished).
 	^ morris

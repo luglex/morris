@@ -9,6 +9,15 @@ Class {
 	#category : #Morris
 }
 
+{ #category : #accessing }
+MorrisToken >> asElement [
+	^ BlElement new
+		size: 20 @ 20;
+		background: player color;
+		border: (BlBorder paint: player color muchDarker width: 3);
+		geometry: BlCircleGeometry new
+]
+
 { #category : #'as yet unclassified' }
 MorrisToken >> beCaptured [
 	state := MorrisTokenCaptured new

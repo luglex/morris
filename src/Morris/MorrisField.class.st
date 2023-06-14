@@ -10,6 +10,25 @@ Class {
 }
 
 { #category : #accessing }
+MorrisField >> asElement [
+	^ BlElement new
+		size: 30 @ 30;
+		background: Color veryLightGray;
+		geometry: BlCircleGeometry new
+]
+
+{ #category : #accessing }
+MorrisField >> asElementWithNumber [
+	^ BlElement new
+		size: 30 @ 30;
+		addChild: ((BlTextElement new
+				text: (self number asString asRopedText foreground: Color white))
+				asScalableElement maxScale: 1);
+		background: Color veryLightGray;
+		geometry: BlCircleGeometry new
+]
+
+{ #category : #accessing }
 MorrisField >> connectedFields [
 	^ connectedFields
 ]
