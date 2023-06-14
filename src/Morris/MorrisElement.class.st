@@ -92,7 +92,10 @@ MorrisElement >> initializeTokens [
 					circle := aToken asElement
 							relocate: (aPlayer = self morris playerA ifTrue: [ 20 ] ifFalse: [ 460 ]) @ (index * 25);
 							when: BlClickEvent
-								do: [ :event | event target phlow spawnObject: aToken ].
+								do: [ :event | 
+									event modifiers isPrimaryModifier
+										ifTrue: [ event target phlow spawnObject: aToken ]
+										ifFalse: [ selectedToken isNil ifTrue: [ selectedToken := aToken ] ] ].
 					self addChild: circle ].
 			(aPlayer tokens
 				select: [ :aToken | aToken state isKindOf: MorrisTokenCaptured ])
@@ -101,7 +104,9 @@ MorrisElement >> initializeTokens [
 							relocate: (aPlayer = self morris playerA ifTrue: [ 460 ] ifFalse: [ 20 ])
 									@ (480 - (index * 25));
 							when: BlClickEvent
-								do: [ :event | event target phlow spawnObject: aToken ].
+								do: [ :event | 
+									event modifiers isPrimaryModifier
+										ifTrue: [ event target phlow spawnObject: aToken ] ].
 					self addChild: circle ] ]
 ]
 
