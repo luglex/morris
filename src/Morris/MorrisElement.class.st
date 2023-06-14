@@ -11,7 +11,9 @@ Class {
 MorrisElement >> initializeBoard [
 	self
 		size: 500 @ 500;
-		background: Color veryVeryLightGray.
+		background: Color white;
+		aptitude: BrShadowAptitude new beLarge;
+		margin: (BlInsets all: 20).
 	self initializeFields.
 	self initializeFieldConnections.
 	self initializeTokens
@@ -42,7 +44,7 @@ MorrisElement >> initializeFields [
 					addChild: ((BlTextElement new
 							text: (field number asString asRopedText foreground: Color white))
 							asScalableElement maxScale: 1);
-					background: Color gray;
+					background: Color veryLightGray;
 					geometry: BlCircleGeometry new;
 					relocate: field coordinate - (15 @ 15);
 					when: BlClickEvent do: [ :event | event target phlow spawnObject: field ].
@@ -60,6 +62,7 @@ MorrisElement >> initializeTokens [
 						ifTrue: [ circle := BlElement new
 									size: 20 @ 20;
 									background: aPlayer color;
+									border: (BlBorder paint: aPlayer color muchDarker width: 3);
 									geometry: BlCircleGeometry new;
 									relocate: aToken state field coordinate - (10 @ 10);
 									when: BlClickEvent
@@ -71,6 +74,7 @@ MorrisElement >> initializeTokens [
 					circle := BlElement new
 							size: 20 @ 20;
 							background: aPlayer color;
+							border: (BlBorder paint: aPlayer color muchDarker width: 3);
 							geometry: BlCircleGeometry new;
 							relocate: (aPlayer = self morris playerA ifTrue: [ 20 ] ifFalse: [ 460 ]) @ (index * 25);
 							when: BlClickEvent
@@ -82,6 +86,7 @@ MorrisElement >> initializeTokens [
 					circle := BlElement new
 							size: 20 @ 20;
 							background: aPlayer color;
+							border: (BlBorder paint: aPlayer color muchDarker width: 3);
 							geometry: BlCircleGeometry new;
 							relocate: (aPlayer = self morris playerA ifTrue: [ 460 ] ifFalse: [ 20 ])
 									@ (480 - (index * 25));

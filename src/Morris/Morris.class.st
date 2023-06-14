@@ -159,8 +159,12 @@ Morris >> hasMorris [
 Morris >> initialize [
 	| connectedFields |
 	super initialize.
-	playerA := MorrisPlayer new name: 'A'; color: Color orange.
-	playerB := MorrisPlayer new name: 'B'; color: Color blue.
+	playerA := MorrisPlayer new
+			name: 'A';
+			color: (Color fromHexString: '419DFF').
+	playerB := MorrisPlayer new
+			name: 'B';
+			color: (Color fromHexString: 'FFC000').
 	fields := (1 to: 24)
 			collect: [ :i | 
 				MorrisField new
