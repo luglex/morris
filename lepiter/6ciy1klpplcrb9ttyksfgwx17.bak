@@ -74,7 +74,7 @@
 					"uidString" : "fH+u6Iq6DQC31bpsCHs5aw=="
 				},
 				"exampleSelector" : "morrisGameB9To3",
-				"previewHeight" : 540,
+				"previewHeight" : 560,
 				"previewShowSelector" : "gtBoardWithFieldNumbersFor:",
 				"exampleBehaviorName" : "MorrisExamples",
 				"codeExpanded" : true,
@@ -106,7 +106,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:13:07.187083+02:00"
+						"dateAndTimeString" : "2023-06-15T17:10:07.884327+02:00"
 					}
 				},
 				"uid" : {
@@ -116,7 +116,45 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "the puzzle below?"
+			},
+			{
+				"__type" : "exampleSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-06-15T17:09:42.466697+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-06-15T17:09:42.466697+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "BTXlMY66DQCDiMvvCHs5aw=="
+				},
+				"previewHeight" : 200,
+				"previewShowSelector" : "gtViewsFor:",
+				"codeExpanded" : true,
+				"previewExpanded" : false,
+				"noCode" : false
 			}
 		]
 	},
@@ -139,12 +177,12 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-06-15T13:13:38.026166+02:00"
+			"dateAndTimeString" : "2023-06-15T17:11:15.045194+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Morris position"
+		"title" : "Puzzle: Blue to move and win"
 	},
 	"uid" : {
 		"__type" : "uuid",

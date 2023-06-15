@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:13:39.572933+02:00"
+						"dateAndTimeString" : "2023-06-15T17:11:36.456901+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:17:26.605286+02:00"
+						"dateAndTimeString" : "2023-06-15T17:12:07.358752+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "uZ245Yq6DQC30FOmCHs5aw=="
+					"uidString" : "6pKwOI66DQCGRfb4CHs5aw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Blue moves and wins. Can you find the solution?"
+				"string" : "Who winns the game below?"
 			},
 			{
 				"__type" : "exampleSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:14:29.243151+02:00"
+						"dateAndTimeString" : "2023-06-15T17:12:34.314517+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:14:29.243151+02:00"
+						"dateAndTimeString" : "2023-06-15T17:12:34.314517+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "fH+u6Iq6DQC31bpsCHs5aw=="
+					"uidString" : "BGYjPI66DQCG2NqeCHs5aw=="
 				},
-				"exampleSelector" : "morrisGameB9To3",
+				"exampleSelector" : "morrisPuzzle1",
 				"previewHeight" : 560,
 				"previewShowSelector" : "gtBoardWithFieldNumbersFor:",
 				"exampleBehaviorName" : "MorrisExamples",
@@ -91,7 +91,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-06-15T13:13:07.148865+02:00"
+			"dateAndTimeString" : "2023-06-15T17:11:36.416031+02:00"
 		}
 	},
 	"editEmail" : {
@@ -102,15 +102,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-06-15T17:11:15.045194+02:00"
+			"dateAndTimeString" : "2023-06-15T17:11:36.416031+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Puzzle: Blue to move and win"
+		"title" : "Puzzle: Who is winning?"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "3bdbc9e3-8aba-0d00-b7ca-42a2087b396b"
+		"uuid" : "41f2af38-8eba-0d00-8644-e016087b396b"
 	}
 }

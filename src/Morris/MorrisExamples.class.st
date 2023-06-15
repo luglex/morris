@@ -31,6 +31,7 @@ MorrisExamples >> morrisAboutToBeGameOver [
 	morris tokenB7 beOnField: (morris fields at: 15).
 	morris tokenB8 beOnField: (morris fields at: 23).
 	morris tokenB9 beOnField: (morris fields at: 5).
+	self assert: (morris isGameOver not).
 	^ morris
 ]
 
@@ -275,6 +276,33 @@ MorrisExamples >> morrisPlayer [
 	self assert: tokenA1 isOnField.
 	self assert: (tokenA1 isOnFieldNumber: 5).
 	self assert: tokenA1 isInHand not.
+	^ morris
+]
+
+{ #category : #accessing }
+MorrisExamples >> morrisPuzzle1 [
+	<gtExample>
+	| morris |
+	morris := self emptyMorris.
+	morris tokenA1 beOnField: (morris fields at: 1).
+	morris tokenA2 beOnField: (morris fields at: 19).
+	morris tokenA3 beOnField: (morris fields at: 3).
+	morris tokenA4 beOnField: (morris fields at: 10).
+	morris tokenA5 beOnField: (morris fields at: 17).
+	morris tokenA6 beOnField: (morris fields at: 7).
+	morris tokenA7 beOnField: (morris fields at: 16).
+	morris tokenA8 beOnField: (morris fields at: 11).
+	morris tokenA9 beOnField: (morris fields at: 13).
+	morris tokenB1 beOnField: (morris fields at: 18).
+	morris tokenB2 beOnField: (morris fields at: 21).
+	morris tokenB3 beOnField: (morris fields at: 15).
+	morris tokenB4 beOnField: (morris fields at: 9).
+	morris tokenB5 beOnField: (morris fields at: 2).
+	morris tokenB6 beOnField: (morris fields at: 6).
+	morris tokenB7 beOnField: (morris fields at: 14).
+	morris tokenB8 beOnField: (morris fields at: 23).
+	morris tokenB9 beOnField: (morris fields at: 5).
+	self assert: (morris isGameOver not).
 	^ morris
 ]
 
