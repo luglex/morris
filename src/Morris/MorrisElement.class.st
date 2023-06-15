@@ -15,16 +15,13 @@ MorrisElement >> hasSelectedToken [
 
 { #category : #accessing }
 MorrisElement >> initializeBoard [
-	self
-		size: 500 @ 500;
-		background: Color white;
-		aptitude: BrShadowAptitude new beLarge;
-		margin: (BlInsets all: 20).
+	self size: 500 @ 500.
 	self removeChildren.
 	self initializePlayerLabels.
 	self initializeFields.
 	self initializeFieldConnections.
-	self initializeTokens
+	self initializeTokens.
+	self addChild: (BrButton new aptitude: BrGlamorousButtonLabelAptitude; size: 50@20; label: 'Reset'; action: [ self morris: Morris new ]; relocate: 225 @ 470)
 ]
 
 { #category : #accessing }

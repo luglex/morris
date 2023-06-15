@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:13:23.344041+02:00"
+						"dateAndTimeString" : "2023-06-15T13:13:39.572933+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,17 +29,17 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:17:03.656798+02:00"
+						"dateAndTimeString" : "2023-06-15T13:17:26.605286+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "3PrA5Iq6DQC3znibCHs5aw=="
+					"uidString" : "uZ245Yq6DQC30FOmCHs5aw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Play the game below:"
+				"string" : "Blue moves and wins. Can you find the solution?"
 			},
 			{
 				"__type" : "exampleSnippet",
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T12:28:28.002046+02:00"
+						"dateAndTimeString" : "2023-06-15T13:14:29.243151+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,20 +66,57 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T12:28:28.002046+02:00"
+						"dateAndTimeString" : "2023-06-15T13:14:29.243151+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "KU8ZRIq6DQC2yFwHCHs5aw=="
+					"uidString" : "fH+u6Iq6DQC31bpsCHs5aw=="
 				},
-				"exampleSelector" : "emptyMorris",
-				"previewHeight" : 560,
+				"exampleSelector" : "morrisGameB9To3",
+				"previewHeight" : 540,
 				"previewShowSelector" : "gtBoardWithFieldNumbersFor:",
 				"exampleBehaviorName" : "MorrisExamples",
 				"codeExpanded" : true,
 				"previewExpanded" : false,
 				"noCode" : true
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-06-15T13:13:07.187083+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2023-06-15T13:13:07.187083+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "p3HK44q6DQC3y6o8CHs5aw=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : ""
 			}
 		]
 	},
@@ -91,7 +128,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-06-14T20:35:30.616122+02:00"
+			"dateAndTimeString" : "2023-06-15T13:13:07.148865+02:00"
 		}
 	},
 	"editEmail" : {
@@ -102,15 +139,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-06-15T13:16:53.825426+02:00"
+			"dateAndTimeString" : "2023-06-15T13:13:38.026166+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Morris game"
+		"title" : "Morris position"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "fea00ff4-7cba-0d00-968d-2bc4087b396b"
+		"uuid" : "3bdbc9e3-8aba-0d00-b7ca-42a2087b396b"
 	}
 }

@@ -74,7 +74,7 @@
 					"uidString" : "KU8ZRIq6DQC2yFwHCHs5aw=="
 				},
 				"exampleSelector" : "emptyMorris",
-				"previewHeight" : 560,
+				"previewHeight" : 540,
 				"previewShowSelector" : "gtBoardWithFieldNumbersFor:",
 				"exampleBehaviorName" : "MorrisExamples",
 				"codeExpanded" : true,

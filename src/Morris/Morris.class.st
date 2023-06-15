@@ -128,7 +128,11 @@ Morris >> gtBoardWithFieldNumbersFor: aView [
 	^ aView explicit
 		title: 'Board with field numbers';
 		priority: 1;
-		stencil: [ MorrisElement new morris: self ]
+		stencil: [ MorrisElement new
+				morris: self;
+				background: Color white;
+				aptitude: BrShadowAptitude new beLarge;
+				margin: (BlInsets all: 20) ]
 ]
 
 { #category : #view }

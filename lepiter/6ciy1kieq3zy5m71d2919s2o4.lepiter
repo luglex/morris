@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:13:23.344041+02:00"
+						"dateAndTimeString" : "2023-06-15T13:19:43.584528+02:00"
 					}
 				},
 				"editEmail" : {
@@ -29,20 +29,20 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T13:17:03.656798+02:00"
+						"dateAndTimeString" : "2023-06-15T13:27:41.669763+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "3PrA5Iq6DQC3znibCHs5aw=="
+					"uidString" : "Pf1q+4q6DQC7jwB2CHs5aw=="
 				},
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Play the game below:"
+				"string" : "Run this to open the game in a new window:"
 			},
 			{
-				"__type" : "exampleSnippet",
+				"__type" : "pharoSnippet",
 				"children" : {
 					"__type" : "snippets",
 					"items" : [ ]
@@ -55,7 +55,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T12:28:28.002046+02:00"
+						"dateAndTimeString" : "2023-06-15T13:19:47.879722+02:00"
 					}
 				},
 				"editEmail" : {
@@ -66,20 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2023-06-15T12:28:28.002046+02:00"
+						"dateAndTimeString" : "2023-06-15T13:22:18.872771+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "KU8ZRIq6DQC2yFwHCHs5aw=="
+					"uidString" : "sXqs+4q6DQC7kvcqCHs5aw=="
 				},
-				"exampleSelector" : "emptyMorris",
-				"previewHeight" : 560,
-				"previewShowSelector" : "gtBoardWithFieldNumbersFor:",
-				"exampleBehaviorName" : "MorrisExamples",
-				"codeExpanded" : true,
-				"previewExpanded" : false,
-				"noCode" : true
+				"code" : "morris := Morris new.\relement := MorrisElement new morris: morris.\rspace := BlSpace new title: 'Morris'.\rspace root addChild: element asScalableElement.\rspace show"
 			}
 		]
 	},
@@ -91,7 +85,7 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-06-14T20:35:30.616122+02:00"
+			"dateAndTimeString" : "2023-06-15T13:19:43.542866+02:00"
 		}
 	},
 	"editEmail" : {
@@ -102,15 +96,15 @@
 		"__type" : "time",
 		"time" : {
 			"__type" : "dateAndTime",
-			"dateAndTimeString" : "2023-06-15T13:16:53.825426+02:00"
+			"dateAndTimeString" : "2023-06-15T13:19:43.542866+02:00"
 		}
 	},
 	"pageType" : {
 		"__type" : "namedPage",
-		"title" : "Morris game"
+		"title" : "Opening the game in a new window"
 	},
 	"uid" : {
 		"__type" : "uuid",
-		"uuid" : "fea00ff4-7cba-0d00-968d-2bc4087b396b"
+		"uuid" : "84596afb-8aba-0d00-bb8e-1b34087b396b"
 	}
 }
